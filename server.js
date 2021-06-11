@@ -4,6 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const superagent = require('superagent');
 app.use(cors());
+app.use(express.json());
 
 const mongoose = require('mongoose');
 mongoose.connect(' mongodb://127.0.0.1:27017/makeUp', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -55,7 +56,7 @@ app.post('/cart', function (req, res) {
         price:price,
       });
       newData.save();
-      res.send('data saved');
+      res.send(newData);
     }
   });
 });
@@ -72,10 +73,9 @@ app.delete('/cart:slug',function(req,res){
     if(error){
       res.send(error);
     }
-    else if(data){
+    else {
       MyDataModel.find({},(error,data)=>{
         res.send(data);
-
       });
     }
   });
