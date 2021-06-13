@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+#name{
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+#headerH h1{
+/* padding-bottom: 200px; */
+position: absolute;
+text-align: center;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+/* background-image: url(./images/headerImage.jpg); */
+}
+
+#Navbar.scrolled{
+    background-Color:#f9f3f3;
+}

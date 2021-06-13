@@ -28,8 +28,15 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 
+app.get('/rated', function (req, res) {
+  superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json`).then(data=>{
+    const array = data.body.map(data=> new MyData (data));
+    res.send(array);
+  });
+});
+
 app.get('/data', function (req, res) {
-  superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.query.brand}&product_type=${req.query.product_type}`).then(data=>{
+  superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.query.product_type}`).then(data=>{
     const array = data.body.map(data=> new MyData (data));
     res.send(array);
   });
@@ -40,6 +47,7 @@ class MyData {
     this.name=data.name;
     this.price=data.price;
     this.img=data.image_link;
+    this.rating=data.rating;
   }
 }
 
