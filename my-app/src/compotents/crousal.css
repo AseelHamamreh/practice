@@ -1,0 +1,8 @@
+#images{
+    width:200px;
+}
+
+.swiper-container.swiper-container-initialized.swiper-container-horizontal.swiper-container-pointer-events {
+    margin-left: 30px;
+    margin-right: 30px;
+}

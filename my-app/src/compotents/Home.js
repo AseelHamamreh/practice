@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import Data from './Data';
 // import TopData from './TopData';
 // import Test from './Test';
-import Footer from './Footer';
+// import Footer from './Footer';
 import Main from './Main';
+import Crousal from './Crousal';
 const axios = require('axios').default;
 export class Home extends Component {
   constructor(props){
@@ -29,15 +30,15 @@ changeType=(alt)=>{
   this.setState({type:alt});
 }
 
-// componentDidMount = async ()=>{
-//   const myData = await axios.get(`http://localhost:3001/rated`);
-//   const newData = myData.data;
-//   this.setState({
-//     topRatedData:newData,
-//     showTop:true,
-//   });
-//   console.log(this.state.topRatedData);
-// }
+componentDidMount = async ()=>{
+  const myData = await axios.get(`http://localhost:3001/main`);
+  const newData = myData.data;
+  this.setState({
+    topRatedData:newData,
+    showTop:true,
+  });
+  console.log(this.state.topRatedData);
+}
 
 showResults = async (e)=>{
   e.preventDefault();
@@ -66,12 +67,17 @@ render() {
       {/* <MyForm changeBrand={this.changeBrand} */}
       {/* // changeType={this.changeType} */}
       {/* showResults={this.showResults}/> */}
-      <Main changeType={this.changeType}
-        showResults={this.showResults}/>
+      {/* <Crousal/> */}
+      {this.state.showTop &&
+      <Crousal data={this.state.topRatedData}
+        saveInDB={this.saveInDB}/>}
+      <h1 style={{textAlign:'center',paddingTop:'70px'}}>Shop By Category!</h1>
       {this.state.showData &&
       <Data data={this.state.data}
         saveInDB={this.saveInDB}/>}
-      <Footer/>
+      <Main changeType={this.changeType}
+        showResults={this.showResults}/>
+      {/* <Footer/> */}
     </div>
   );
 }

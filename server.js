@@ -42,6 +42,13 @@ app.get('/data', function (req, res) {
   });
 });
 
+app.get('/main', function (req, res) {
+  superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json`).then(data=>{
+    const array = data.body.map(data=> new MyNewData (data));
+    res.send(array);
+  });
+});
+
 class MyData {
   constructor(data){
     this.name=data.name;
@@ -51,6 +58,14 @@ class MyData {
   }
 }
 
+class MyNewData {
+  constructor(data){
+    this.name=data.name;
+    this.price=data.price;
+    this.img=data.image_link;
+    this.rating=data.rating;
+  }
+}
 app.post('/cart', function (req, res) {
   const {name,price,img} = req.body;
   const slug = name.toLowerCase().split('').join('-');
