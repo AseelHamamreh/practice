@@ -8,7 +8,7 @@ import './Header.css';
 export class Header extends Component {
   render() {
     return (
-      <div>
+      <div >
         <Navbar style={{backgroundColor:'rgba(0,0,0,0.3)', paddingTop:'0px',position: 'fixed',top: '0' ,width: '100%'}} >
           <img style={{width:'180px', paddingRight:'10px', paddingTop:'5px'}} src ={logo} alt=''/>
           <Navbar.Brand id='name'style={{paddingRight:'700px'}} href="/">BeautiFly</Navbar.Brand>

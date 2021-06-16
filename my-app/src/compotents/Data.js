@@ -22,14 +22,12 @@ export class Data extends Component {
           onSwiper={(swiper) => console.log(swiper)}
         >
           {this.props.data.map((data,idx)=>{
-            if (data.img !== 'null'){
-              return <SwiperSlide style={{marginTop:'30px'}}>
-                <img style={{width:'200px',height:'250px', marginLeft:'30px', marginRight:'30px'}} src={data.img} alt={data.name}/>
-                <h5 style={{marginLeft:'30px', marginRight:'30px'}}>{data.name}</h5>
-                <p style={{marginLeft:'30px', marginRight:'30px'}}>{data.price} $</p>
-                <button style={{marginLeft:'30px', marginRight:'30px'}} onClick={()=>this.props.saveInDB(data)}>Add to Cart</button>
-              </SwiperSlide>;
-            }
+            return <SwiperSlide style={{marginTop:'30px'}}>
+              <img style={{width:'200px',height:'250px', marginLeft:'30px', marginRight:'30px'}} src={data.img} alt={data.name}/>
+              <h5 style={{marginLeft:'30px', marginRight:'30px'}}>{data.name}</h5>
+              <p style={{marginLeft:'30px', marginRight:'30px'}}>{data.price} $</p>
+              <button style={{marginLeft:'30px', marginRight:'30px'}} onClick={()=>this.props.saveInDB(data)}>Add to Cart</button>
+            </SwiperSlide>;
           })}
         </Swiper>
 

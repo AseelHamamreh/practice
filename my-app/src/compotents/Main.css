@@ -3,7 +3,7 @@
     height :350px;
     border-radius: 50%;
     margin-left: 120px;
-    float: left;
+    /* float: left; */
     margin-top: 50px;
     margin-bottom: 60px;
     border: solid 0.5px black;
@@ -13,3 +13,49 @@
 #first img:hover ,#second img:hover, #third img:hover{
     transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
+#firstImage , #forthImage,#seven{
+   background-color: rgb(0,0,0,0.3);
+    width: 300px;
+    height: 350px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 149px;
+    margin-bottom: 5px;
+    position: absolute;
+    margin-left: 120px;
+    color: white;  
+    margin-top: -409px;
+    cursor:pointer;
+}
+
+#secondImage, #five,#eight{
+    background-color: rgb(0,0,0,0.3);
+    width: 300px;
+    height: 350px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 149px;
+    margin-bottom: 5px;
+    position: absolute;
+    margin-left: 540px;
+    color: white;  
+    margin-top: -409px;
+    cursor:pointer;
+}
+ 
+#thirdImage,#six,#nine{
+    background-color: rgb(0,0,0,0.3);
+    width: 300px;
+    height: 350px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 149px;
+    margin-bottom: 5px;
+    position: absolute;
+    margin-left: 960px;
+    color: white;  
+    margin-top: -409px;
+    cursor:pointer;
+
+}
+

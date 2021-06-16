@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Data from './Data';
 // import TopData from './TopData';
 // import Test from './Test';
-// import Footer from './Footer';
+import Footer from './Footer';
 import Main from './Main';
 import Crousal from './Crousal';
 const axios = require('axios').default;
@@ -72,12 +72,13 @@ render() {
       <Crousal data={this.state.topRatedData}
         saveInDB={this.saveInDB}/>}
       <h1 style={{textAlign:'center',paddingTop:'70px'}}>Shop By Category!</h1>
+      <Main changeType={this.changeType}
+        showResults={this.showResults}/>
       {this.state.showData &&
       <Data data={this.state.data}
         saveInDB={this.saveInDB}/>}
-      <Main changeType={this.changeType}
-        showResults={this.showResults}/>
-      {/* <Footer/> */}
+      <h1 style={{textAlign:'center',paddingTop:'70px'}}>Shop By Your Favorite Brand!</h1>
+      <Footer/>
     </div>
   );
 }
