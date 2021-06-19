@@ -6,6 +6,9 @@ import Data from './Data';
 import Footer from './Footer';
 import Main from './Main';
 import Crousal from './Crousal';
+import Brand from './Brand';
+import BrandData from './BrandData';
+
 const axios = require('axios').default;
 export class Home extends Component {
   constructor(props){
@@ -13,12 +16,14 @@ export class Home extends Component {
     this.state={
       data:[],
       showData:false,
-      brand:'',
       type:'',
       cartData:[],
       showCartData:false,
       topRatedData:[],
       showTop:false,
+      brandData:[],
+      showBrandData:false,
+      brand:''
     };
   }
 changeBrand=(e)=>{
@@ -50,6 +55,17 @@ showResults = async (e)=>{
   console.log(myData.data);
 }
 
+showBrandResults = async (e,data)=>{
+  this.setState({brand:e.target.value});
+  e.preventDefault();
+  const myData = await axios.get(`http://localhost:3001/brand?brand=${this.state.brand}`);
+  this.setState({
+    brandData:myData.data,
+    showBrandData:true,
+  });
+  console.log(myData.data);
+}
+
 saveInDB = async(data)=>{
   const reqBody = data;
   const newData = await axios.post('http://localhost:3001/cart',reqBody);
@@ -57,7 +73,7 @@ saveInDB = async(data)=>{
     cartData:newData.data,
     showCartData:true
   });
-  console.log(newData.data);
+  console.log('savedData' , newData.data);
 }
 
 render() {
@@ -78,7 +94,13 @@ render() {
       <Data data={this.state.data}
         saveInDB={this.saveInDB}/>}
       <h1 style={{textAlign:'center',paddingTop:'70px'}}>Shop By Your Favorite Brand!</h1>
+      <Brand
+        showBrandResults={this.showBrandResults} />
+      {this.state.showBrandData &&
+      <BrandData brandData= {this.state.brandData}
+        saveInDB={this.saveInDB}/>}
       <Footer/>
+
     </div>
   );
 }

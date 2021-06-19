@@ -16,7 +16,6 @@ export class Header extends Component {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/aboutus">About Us</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
-            <Nav.Link href="/wishlist">Wish List</Nav.Link>
           </Nav>
         </Navbar>
         <div id='headerH'>

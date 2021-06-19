@@ -42,6 +42,13 @@ app.get('/data', function (req, res) {
   });
 });
 
+app.get('/brand', function (req, res) {
+  superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.query.brand}`).then(data=>{
+    const array = data.body.map(data=> new BrandData (data));
+    res.send(array);
+  });
+});
+
 app.get('/main', function (req, res) {
   superagent.get(`http://makeup-api.herokuapp.com/api/v1/products.json`).then(data=>{
     const array = data.body.map(data=> new MyNewData (data));
@@ -59,6 +66,15 @@ class MyData {
 }
 
 class MyNewData {
+  constructor(data){
+    this.name=data.name;
+    this.price=data.price;
+    this.img=data.image_link;
+    this.rating=data.rating;
+  }
+}
+
+class BrandData {
   constructor(data){
     this.name=data.name;
     this.price=data.price;

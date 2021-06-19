@@ -8,11 +8,11 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-export class Crousal extends Component {
+export class BrandData extends Component {
   render() {
+    console.log(this.props.brandData);
     return (
       <div style={{marginTop:'30px'}}>
-        <h1 style={{textAlign:'center'}}>Shop Now!</h1>
         <Swiper
           spaceBetween={50}
           slidesPerView={5}
@@ -22,7 +22,7 @@ export class Crousal extends Component {
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {this.props.data.map((data)=>{
+          {this.props.brandData.map((data,idx)=>{
             return <SwiperSlide style={{marginTop:'30px'}}>
               <img style={{width:'200px',height:'250px', marginLeft:'30px', marginRight:'30px'}} src={data.img} alt={data.name}/>
               <h5 style={{marginLeft:'30px', marginRight:'30px'}}>{data.name}</h5>
@@ -37,4 +37,4 @@ export class Crousal extends Component {
   }
 }
 
-export default Crousal;
+export default BrandData;
